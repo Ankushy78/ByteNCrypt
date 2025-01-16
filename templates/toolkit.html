@@ -4,17 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toolkit</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="toolkit-container">
+    <div class="container">
         <h1>Toolkit</h1>
-        <button onclick="window.location.href='/run_tool/password_manager'">Password Manager</button>
-        <button onclick="window.location.href='/run_tool/password_generator'">Password Generator</button>
-        <button onclick="window.location.href='/run_tool/password_strength_checker'">Password Strength Checker</button>
-        <button onclick="window.location.href='/run_tool/ip_lookup'">IP Lookup</button>
-        <button onclick="window.location.href='/run_tool/encryption_decryption'">Encryption/Decryption</button>
-        <button onclick="window.location.href='/'">Back</button>
+        
+        <h2>Password Generator</h2>
+        <a href="{{ url_for('run_tool', tool_name='password_generator') }}">Generate a Password</a>
+        
+        <h2>Community Post</h2>
+        <form action="{{ url_for('community_post') }}" method="POST">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="post">Post:</label><br>
+            <textarea id="post" name="post" required></textarea><br><br>
+            <input type="submit" value="Save Post">
+        </form>
+        
+        <h2>Saved Posts</h2>
+        <a href="{{ url_for('community_post') }}">View Saved Posts</a>
+        {% if posts %}
+            <pre>{{ posts }}</pre>
+        {% endif %}
     </div>
 </body>
 </html>
