@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Post</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="post-container">
+        <h1>Community Post (beta)</h1>
+        <form action="/community_post" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required><br><br>
+            <textarea name="post" placeholder="Your Post" required></textarea><br><br>
+            <button type="submit">Create Post</button>
+        </form>
+        <hr>
+        <h2>Posts</h2>
+        <div>
+            <pre>{{ posts }}</pre>
+        </div>
+    </div>
+</body>
+</html>
